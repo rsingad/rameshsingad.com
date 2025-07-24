@@ -30,6 +30,25 @@ function Project() {
       github: "https://github.com/rsingad/desktop-base-web.git",
       img: "namari.png",
       technology: ["html", "css"],
+    },{
+      title: "ecoworld",
+      url: "https://ecoworldiii.netlify.app/",
+      // github: "https://github.com/rsingad/desktop-base-web.git",
+      // img: "namari.png",
+      technology: ["Reactjs+vite", "netlify","express","mongodb"],
+    },{
+      title: "thelakemount0-2",
+      url: "https://the-lake-mount-0-2.vercel.app/",
+      // github: "https://github.com/rsingad/desktop-base-web.git",
+      // img: "namari.png",
+      technology: ["html", "css"],
+    },
+    {
+      title: "thelakemount0-3",
+      url: "https://the-lake-mount-0-3-lred.vercel.app/",
+      // github: "https://github.com/rsingad/desktop-base-web.git",
+      // img: "namari.png",
+      technology: ["html", "css"],
     },
    
   ];
