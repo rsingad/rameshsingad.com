@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, X, Mail, Lock } from "lucide-react";
+import { Github, X, Mail, Lock, Link } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Redirection के लिए
 
@@ -65,8 +67,9 @@ function AuthModal({ isOpen, onClose }) {
 
                             {/* Social Logins */}
                             <div className="space-y-4">
-                                <a href="http://localhost:5000/auth/github" className="w-full flex items-center justify-center gap-3 bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white font-semibold hover:bg-slate-700 hover:border-cyan-500 transition-all duration-300">
-                                   <Github className="w-5 h-5" /> Continue with GitHub
+                                <a href={`${import.meta.env.VITE_API_BASE_URL}/auth/github`}
+                                 className="w-full flex items-center justify-center gap-3 bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white font-semibold hover:bg-slate-700 hover:border-cyan-500 transition-all duration-300">
+                                   <FaGithub className="w-5 h-5" /> Continue with GitHub
                                 </a>
                                 <a href="#" className="w-full flex items-center justify-center gap-3 bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white font-semibold hover:bg-slate-700 hover:border-cyan-500 transition-all duration-300">
                                    <GoogleIcon /> Continue with Google

@@ -12,6 +12,7 @@ import NotFound from './components/NotFound.jsx';
 import Chatbot from './components/Chatbot.jsx';
 import Education from './components/education.jsx';
 import Experience from './components/experience.jsx';
+import Footer from './components/footer.jsx';
 // import Chat from './components/chat/chat';
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Chatbot />
+        <Footer/>
       </BrowserRouter>
 
     </>
