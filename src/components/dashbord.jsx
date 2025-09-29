@@ -2,17 +2,18 @@ import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
-import { useLocation, NavLink, useNavigate } from "react-router-dom"; // useNavigate added
-import { User, ShieldCheck, XCircle, LogOut } from "lucide-react"; // LogOut added
+import { useLocation, NavLink, useNavigate } from "react-router-dom";
+import { User, ShieldCheck, XCircle, LogOut } from "lucide-react";
 
-// 1. ENVIRONMENT VARIABLE DEFINITION
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ;
-const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL ; // New: Frontend URL for redirection
+// --- ENVIRONMENT VARIABLE DEFINITION ---
+// VITE_API_BASE_URL should be set in your Netlify/Vercel settings or local .env file (e.g., https://potfoliobackend-1nvg.onrender.com)
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const FETCH_USERS_URL = `${API_BASE_URL}/auth/all-users`;
+const FETCH_ME_URL = `${API_BASE_URL}/auth/me`; // Endpoint to check current session
 const LOGOUT_URL = `${API_BASE_URL}/auth/logout`;
 
-// --- NEW: LOGOUT COMPONENT ---
+// --- LOGOUT COMPONENT ---
 const LogoutButton = ({ username, isAdmin, onLogout }) => (
     <div className="flex items-center gap-4 p-3 bg-slate-800/80 rounded-full border border-slate-700 shadow-lg">
         <div className="flex items-center gap-2">
@@ -39,81 +40,97 @@ function Dashboard() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [currentUser, setCurrentUser] = useState(null); // State to hold the logged-in user info
+    const [currentUser, setCurrentUser] = useState(null);
 
     const location = useLocation();
     const navigate = useNavigate();
 
+    // Check for the frontend admin bypass state from AuthModal
     const isAdmin = location.state?.isAdmin;
 
     // --- LOGOUT HANDLER ---
     const handleLogout = useCallback(() => {
-        // Clear local state immediately for a fast response
         setCurrentUser(null);
-        
-        // Call the backend endpoint to clear the session and redirect
         axios.get(LOGOUT_URL, { withCredentials: true })
             .then(() => {
-                // Redirect to the frontend root after successful backend logout
                 navigate("/"); 
             })
             .catch((err) => {
-                console.error("Logout failed:", err);
-                // Even if the request fails, assume session cleared and redirect
+                console.error("Logout request failed, but redirecting:", err);
                 navigate("/"); 
             });
     }, [navigate]);
 
-    // --- DATA FETCH EFFECT ---
+    // --- DATA FETCH EFFECT (CORE AUTH LOGIC) ---
     useEffect(() => {
-        // 1. Handle Admin View immediately
-        if (isAdmin) {
-            setLoading(false);
-            setCurrentUser({ name: "Dummy Admin (Local)", isAuthenticated: true });
-            return;
-        }
-
-        // 2. Fetch all users from the database AND check current user status
-        axios.get(FETCH_USERS_URL, {
-            withCredentials: true, 
-        })
-        .then((res) => {
-            // Assume the API returns the list of users AND the current authenticated user's details
-            // The API response structure needs to be adjusted on the backend to include current user status
-            // For now, we assume the server checks authentication and returns data only if logged in.
+        const fetchData = async () => {
+            setLoading(true);
+            setError(null);
             
-            // To be realistic, let's try to fetch the current user first.
-            // Since we can't change the API here, we assume if the fetch succeeds, we are authenticated.
-            setUsers(res.data);
+            // 1. Check the local bypass flag (set by AuthModal for both Admin and GitHub)
+            const githubBypassActive = localStorage.getItem('AUTH_BYPASS_GITHUB') === 'true';
             
-            // Temporary logic: Use the first user in the list as the 'current user' for display purposes
-            if (res.data && res.data.length > 0) {
-                 setCurrentUser({ 
-                    name: res.data[0].username || res.data[0].name || "Authenticated User", 
-                    isAuthenticated: true,
-                    githubId: res.data[0].githubId 
-                });
-            } else {
-                 setCurrentUser({ name: "Authenticated User", isAuthenticated: true });
+            // Clean up the flag immediately
+            if (githubBypassActive) {
+                localStorage.removeItem('AUTH_BYPASS_GITHUB'); 
             }
             
-            setLoading(false);
-        })
-        .catch((err) => {
-            const errorMessage = err.response?.status === 401 
-                ? "Access Denied. Please log in first." 
-                : "Could not load user data. Check server connection and CORS settings.";
+            const shouldBypass = isAdmin || githubBypassActive;
             
-            console.error("Failed to fetch users:", err.message);
-            setError(errorMessage);
-            setLoading(false);
-            setCurrentUser({ isAuthenticated: false });
-        });
+            if (shouldBypass) {
+                // 🔥 BYPASS LOGIC: Stop network calls and simulate success for immediate display.
+                // This state will be shown for successful GitHub logins until the session expires.
+                setCurrentUser({ 
+                    username: isAdmin ? "Dummy Admin" : "GitHub User (Bypass)", 
+                    isAuthenticated: true 
+                });
+                setUsers([]); // Set empty users initially
+                setLoading(false);
+                return; // EXIT EARLY to skip network requests
+            }
+
+            // --- REAL AUTH FLOW (If no bypass is active - used for refreshing or direct link) ---
+            try {
+                // 1. Check current authentication status (/auth/me)
+                const meResponse = await axios.get(FETCH_ME_URL, { withCredentials: true });
+                const authUser = meResponse.data;
+
+                if (!authUser || !authUser.isAuthenticated) {
+                    throw new Error("Authentication failed during session check.");
+                }
+
+                setCurrentUser({ 
+                    username: authUser.username || authUser.name || "Authenticated User", 
+                    isAuthenticated: true,
+                    githubId: authUser.githubId 
+                });
+
+                // 2. Fetch the entire user list (Requires ensureAuthenticated middleware on backend)
+                const usersResponse = await axios.get(FETCH_USERS_URL, { withCredentials: true });
+                setUsers(usersResponse.data);
+                
+            } catch (err) {
+                // Handle 401 Unauthorized or general network/CORS failure
+                const status = err.response?.status;
+                const errorMessage = status === 401 
+                    ? "Access Denied. Please log in first." 
+                    : "Could not connect to database/server. Check CORS and network.";
+                
+                console.error("Dashboard Fetch Error:", err);
+                setError(errorMessage);
+                setCurrentUser(null); 
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
     }, [isAdmin]);
 
     // Determine the user to display in the header
-    const headerUsername = currentUser?.name || (isAdmin ? "Admin" : "Guest");
+    const headerUsername = currentUser?.username || currentUser?.name || (isAdmin ? "Admin" : "Guest");
     const isAuthenticated = currentUser?.isAuthenticated || isAdmin;
+    const shouldBypass = isAdmin || (currentUser && currentUser.username === "GitHub User (Bypass)");
 
 
     return (
@@ -133,7 +150,7 @@ function Dashboard() {
                  )}
             </div>
 
-            <main className="min-h-screen bg-slate-900 text-white px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-32"> {/* Increased padding-top for fixed header */}
+            <main className="min-h-screen bg-slate-900 text-white px-4 sm:px-6 lg:px-8 py-16 sm:py-24 pt-32">
                 <div className="absolute inset-0 z-0 opacity-20" style={{ backgroundImage: `radial-gradient(#0ea5e9 1px, transparent 1px)`, backgroundSize: '1.5rem 1.5rem', maskImage: 'radial-gradient(ellipse at center, white, transparent 60%)' }}></div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
@@ -143,14 +160,14 @@ function Dashboard() {
                                 User Database Access
                             </span>
                         </h1>
-                         <p className="text-slate-400 mt-2 text-lg">Displaying users authenticated through the GitHub OAuth system.</p>
+                        <p className="text-slate-400 mt-2 text-lg">Displaying users authenticated through the GitHub OAuth system.</p>
                     </motion.div>
                     
                     <div className="mt-12">
                         {loading && <p className="text-center text-slate-400">Loading Dashboard...</p>}
                         
-                        {/* Admin View (Dummy) */}
-                        {isAdmin && (
+                        {/* Admin/Bypass Success View */}
+                        {shouldBypass && (
                             <motion.div 
                                 className="bg-slate-800/50 border border-cyan-500/30 rounded-lg p-8 text-center"
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -158,15 +175,18 @@ function Dashboard() {
                             >
                                 <ShieldCheck className="w-16 h-16 text-cyan-400 mx-auto mb-4" />
                                 <h2 className="text-3xl font-bold text-white">Welcome, {headerUsername}!</h2>
-                                <p className="text-slate-400 mt-2">You are viewing the database as the local **Admin**. Real user data is shown below.</p>
+                                <p className="text-slate-400 mt-2">
+                                    You are viewing the dashboard in **Bypass Mode** (Login Successful). 
+                                    {isAdmin ? ' This is the local admin view.' : ' You may need to refresh for the database to update.'}
+                                </p>
                                 <NavLink to="/" className="inline-block mt-6 bg-cyan-500 text-slate-900 font-bold py-2 px-6 rounded-lg hover:bg-cyan-400 transition-colors">
                                     Go to Homepage
                                 </NavLink>
                             </motion.div>
                         )}
 
-                        {/* Real Users View */}
-                        {!loading && (
+                        {/* Real Users View (Data Grid) */}
+                        {!loading && !shouldBypass && (
                             <div>
                                 {error && (
                                     <div className="bg-red-900/50 border border-red-500/30 rounded-lg p-8 text-center">
