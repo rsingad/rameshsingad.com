@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 // Groq SDK को import करें
 import Groq from 'groq-sdk'; 
 
-// ⚠️ सुरक्षा: API Key को .env.local से लोड करें। इसे कोड में हार्डकोड न करें।
+
 const GROQ_API_KEY = `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`; 
 
 // Groq क्लाइंट को initialize करें
