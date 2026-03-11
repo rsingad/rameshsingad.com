@@ -1,33 +1,31 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, Clock, MapPin, Target, Code, Cpu, Shield, Server, Zap, TrendingUp } from "lucide-react";
+import { Briefcase, Calendar, Clock, MapPin, Target, Sparkles, Zap, TrendingUp } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
+import { NavLink } from "react-router-dom";
 
-
-// Animation Variants (Smooth entrance)
-const timelineVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+// Animation Variants
+const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-// --- पूर्ण अनुभव डेटा ---
+// Experience Data
 const experienceData = [
-    // 1. Research & Development IT Solutions (Current)
     {
         title: "Software Development Intern",
         company: "Research & Development IT Solutions",
         duration: "Apr 2025 - Sep 2025",
-        location: "Jaipur, India (On-site)",
+        location: "Jaipur, India",
         experience: "6 months",
         type: "R&D",
-        isCurrent: false,
-        icon: <Server size={16} className="text-pink-400" />,
+        isCurrent: true,
+        icon: <TrendingUp size={22} />,
         responsibilities: [
             "Contributed to **research and development** projects within a professional IT environment.",
             "Worked on server-side logic and web application architecture.",
             "Gained experience in internal software workflow and deployment.",
         ],
     },
-    // 2. Hyperrcompute
     {
         title: "Full Stack Development Intern",
         company: "Hyperrcompute",
@@ -36,143 +34,120 @@ const experienceData = [
         experience: "4 months",
         type: "Cloud",
         isCurrent: false,
-        icon: <Cpu size={16} className="text-cyan-400" />,
+        icon: <Briefcase size={22} />,
         responsibilities: [
             "Developed a decentralized cloud system prototype.",
             "Integrated frontend interfaces with scalable backend services.",
             "Contributed to the core product development.",
         ],
     },
-    // 3. Open Innovations Lab Intern
     {
         title: "Web Development Intern",
         company: "Open Innovations Lab",
         duration: "Mar 2024 - May 2024",
-        location: "Jodhpur, India (On-site)",
+        location: "Jodhpur, India",
         experience: "3 months",
         type: "Web Project",
         isCurrent: false,
-        icon: <Shield size={16} className="text-yellow-400" />,
+        icon: <Target size={22} />,
         responsibilities: [
             "Focused on **responsive design** and modern JavaScript practices.",
             "Improved existing codebase for enhanced performance.",
         ],
     },
-    // 4. Open Innovations Lab Trainee
     {
         title: "Web Development Trainee",
         company: "Open Innovations Lab",
         duration: "Jul 2023 - Feb 2024",
-        location: "Jodhpur, India (On-site)",
+        location: "Jodhpur, India",
         experience: "8 months",
         type: "Training",
         isCurrent: false,
-        icon: <Code size={16} className="text-emerald-400" />,
+        icon: <Clock size={22} />,
         responsibilities: [
-            "Mastered **Express.js** and **Node.js**.",
+            "Mastered **HTML**, **CSS**, **JavaScript**, **React.js**, **Express.js** and **Node.js**,**MongoDB**,",
             "Built foundational knowledge in database and server-side programming.",
         ],
     },
 ];
 
 // Component for a single timeline entry
-const TimelineItem = ({ data }) => {
-    const isCurrent = data.isCurrent;
-
-    // Card Styles
-    const cardStyles = isCurrent
-        ? "border-sky-300/60 bg-slate-800/90 shadow-2xl shadow-sky-500/20 transform hover:scale-[1.01] transition-all"
-        : "border-slate-700/50 bg-slate-800/70 shadow-lg hover:shadow-xl hover:bg-slate-800/90 transition-all duration-300";
-
-    // Render responsibilities as bullet points
-    const renderResponsibilities = (resps) => {
-        return resps.map((resp, i) => {
-            // Removes bolding marks and renders simple text.
-            const plainText = resp.replace(/\*\*(.*?)\*\*/g, '$1');
-
-            return (
-                <li
-                    key={i}
-                    className="text-slate-400 leading-relaxed flex items-start"
-                >
-                    {/* ICON BULLET POINT: Using Target icon */}
-                    <Target size={14} className="mr-2 mt-1 flex-shrink-0 text-sky-400" />
-                    <span dangerouslySetInnerHTML={{ __html: plainText }} />
-                </li>
-            );
-        });
-    };
+const TimelineItem = ({ data, index }) => {
+    const isLeft = index % 2 === 0;
 
     return (
         <motion.div
-            className="relative mb-12 last:mb-0"
-            variants={timelineVariants}
+            className="relative mb-24 lg:mb-32 last:mb-10"
+            variants={cardVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
         >
-            {/* Timeline Marker (Icon) */}
-            <div
-                className={`absolute w-7 h-7 rounded-full flex items-center justify-center bg-slate-900 ring-4 z-10 top-2 -left-[14px] 
-                    ${isCurrent
-                        ? "ring-sky-500/30 animate-pulse border border-sky-400"
-                        : "ring-slate-900 border border-slate-700"
-                    }`}
-            >
-                {/* Rendering the icon from data.icon */}
-                {data.icon}
+            {/* Timeline Indicator (Center Dot) */}
+            <div className="hidden lg:flex absolute w-14 h-14 top-0 left-1/2 transform -translate-x-1/2 items-center justify-center z-20">
+                <div className={`
+                    p-3 rounded-2xl border-2 transition-all duration-500
+                    ${data.isCurrent
+                        ? "bg-indigo-600 border-indigo-400 shadow-[0_0_30px_rgba(79,70,229,0.5)] scale-110"
+                        : "bg-slate-900 border-slate-700 shadow-xl"} 
+                    text-white group-hover:scale-125
+                `}>
+                    {data.icon}
+                </div>
             </div>
 
-            {/* Current Tag */}
-            {isCurrent && (
-                <span className="absolute z-20 top-[-25px] left-6 text-xs font-semibold text-white bg-sky-600/90 px-3 py-1 rounded-full shadow-lg shadow-sky-600/50 uppercase tracking-wider">
-                    <Zap size={10} className="inline mr-1" /> Current Focus
-                </span>
-            )}
-
             {/* Content Card */}
-            <div className={`ml-6 p-7 rounded-3xl border ${cardStyles}`}>
-                {/* Title & Type */}
-                <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-white flex-grow">
-                        {data.title}
-                    </h3>
-                    <span className="text-xs font-bold text-white bg-indigo-700 px-3 py-1 rounded-full flex-shrink-0 ml-4 shadow-md uppercase tracking-wider">
+            <div className={`
+                glass p-8 lg:p-10 rounded-[3rem] relative group transition-all duration-700 hover:-translate-y-3
+                lg:w-[calc(50%-5rem)]
+                ${isLeft ? 'lg:mr-auto' : 'lg:ml-auto'}
+                ${data.isCurrent ? "border-indigo-500/40 ring-2 ring-indigo-500/10 shadow-2xl shadow-indigo-500/10" : "hover:border-cyan-500/30"}
+            `}>
+                {/* Visual Accent */}
+                <div className={`absolute -top-10 ${isLeft ? '-right-10' : '-left-10'} w-48 h-48 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000`}></div>
+
+                {/* Status Bar */}
+                <div className="flex flex-wrap items-center gap-3 mb-8">
+                    <span className="px-4 py-1.5 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-cyan-500/20 shadow-sm">
                         {data.type}
                     </span>
-                </div>
-
-                {/* Company */}
-                <h4 className="text-lg text-sky-400 font-bold mb-3 flex items-center border-b border-slate-700/50 pb-3">
-                    <Briefcase size={16} className="text-indigo-400 mr-2" />
-                    <span className="ml-2">{data.company}</span>
-                    {isCurrent && <span className="ml-4 text-xs font-bold text-lime-400/90">(Primary Node)</span>}
-                </h4>
-
-                {/* Duration & Location */}
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-400 mb-4">
-                    <span className="flex items-center">
-                        <Calendar size={14} className="mr-1 text-indigo-400" />{" "}
-                        {data.duration}
-                    </span>
-                    {data.experience && (
-                        <span className="flex items-center">
-                            <Clock size={14} className="mr-1 text-indigo-400" />{" "}
-                            {data.experience}
-                        </span>
+                    {data.isCurrent && (
+                        <div className="flex items-center gap-2 px-4 py-1.5 bg-indigo-500/20 text-indigo-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-indigo-500/30 animate-pulse">
+                            <Zap size={12} className="fill-current" />
+                            <span>Active Node</span>
+                        </div>
                     )}
-                    <span className="flex items-center">
-                        <MapPin size={14} className="mr-1 text-indigo-400" /> {data.location}
-                    </span>
                 </div>
 
-                {/* Responsibilities */}
-                <p className="text-slate-300 font-semibold mb-2 pt-1 border-t border-slate-700/50">
-                    <Target size={14} className="inline mr-2 text-sky-400" /> Key
-                    Activities:
-                </p>
-                <ul className="pl-0 space-y-2 text-base">
-                    {renderResponsibilities(data.responsibilities)}
+                <h3 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3 leading-tight tracking-tighter">
+                    {data.title}
+                </h3>
+
+                <div className="flex items-center gap-4 mb-8">
+                    <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                        <Briefcase size={20} className="text-cyan-600" />
+                    </div>
+                    <div>
+                        <h4 className="text-xl font-black text-slate-800 dark:text-slate-200 tracking-tight leading-none mb-1">
+                            {data.company}
+                        </h4>
+                        <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            <span className="flex items-center gap-1.5"><Calendar size={12} /> {data.duration}</span>
+                            <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></span>
+                            <span className="flex items-center gap-1.5"><MapPin size={12} /> {data.location}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul className="space-y-4">
+                    {data.responsibilities.map((resp, i) => (
+                        <li key={i} className="flex items-start gap-4 text-slate-600 dark:text-slate-400 font-medium leading-relaxed group/li">
+                            <div className="mt-1.5 p-1 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 transition-colors group-hover/li:bg-cyan-500 group-hover/li:text-white">
+                                <Target size={12} />
+                            </div>
+                            <span className="text-sm" dangerouslySetInnerHTML={{ __html: resp.replace(/\*\*(.*?)\*\*/g, '<b class="text-slate-900 dark:text-white font-black">$1</b>') }} />
+                        </li>
+                    ))}
                 </ul>
             </div>
         </motion.div>
@@ -181,50 +156,108 @@ const TimelineItem = ({ data }) => {
 
 // Main Experience Section
 const Experience = () => {
-
     return (
-        <div className="bg-slate-900">
+        <>
+            <Helmet>
+                <title>Professional Work History & Engineering Internships | Ramesh Singad</title>
+                <meta name="description" content="Follow the professional trajectory of Ramesh Singad, including roles at R&D IT Solutions, Hypercompute, and Open Innovations Lab. Specializing in full-stack dev and R&D." />
+                <meta name="keywords" content="Ramesh Singad Experience, Senior Software Engineer Intern, Full-Stack Developer Jaipur, Hypercompute Cloud Projects, R&D IT Solutions Experience" />
+            </Helmet>
 
+            <main className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white px-4 py-24 overflow-hidden">
 
-            <section className="relative max-w-4xl mx-auto px-6 py-12 bg-slate-900 min-h-screen text-white">
-
-                {/* Background Gradient Line (Main Vertical Line) */}
-                <div className="absolute left-4 top-0 w-[2px] h-full bg-gradient-to-b from-sky-500/60 via-indigo-500/30 to-transparent"></div>
-
-                {/* Section Title */}
-                <motion.h2
-                    className="text-3xl sm:text-4xl font-extrabold mb-10 text-center"
-                    variants={timelineVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                >
-                    Professional <span className="text-sky-400">Experience Registry</span>
-                </motion.h2>
-
-                {/* Timeline Items Container */}
-                <div className="relative z-10 pl-4">
-                    {experienceData.map((exp, i) => (
-                        <TimelineItem key={i} data={exp} />
-                    ))}
-
-                    {/* CLOSING ICON: TrendingUp icon */}
-                    <div className="absolute w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center z-10 bottom-[-14px] left-[-7px] ring-4 ring-slate-900 border border-sky-500 shadow-lg shadow-sky-500/50">
-                        <TrendingUp size={16} className="text-sky-400" />
-                    </div>
+                {/* Consistent Background Decorations */}
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-[-10%] left-[-10%] h-[60%] w-[60%] bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-[160px] animate-blob"></div>
+                    <div className="absolute bottom-[-10%] right-[-10%] h-[60%] w-[60%] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[160px] animate-blob animation-delay-4000"></div>
+                    <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(90deg, #0ea5e9 1px, transparent 1px)', backgroundSize: '50px 50px' }}></div>
+                    <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-slate-50 dark:from-slate-950 to-transparent"></div>
                 </div>
 
-                {/* Footer/CTA Placeholder */}
-                <div className="text-center mt-12">
-                    <a
-                        href="/contact"
-                        className="inline-flex items-center justify-center gap-3 bg-indigo-600 text-white font-extrabold py-3 px-8 rounded-xl shadow-lg shadow-indigo-500/50 hover:bg-indigo-500 transition-all duration-300"
+                <div className="max-w-7xl mx-auto relative z-10">
+
+                    {/* Header Label */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="flex justify-center mb-8"
                     >
-                        <Zap size={20} /> INITIATE CONTACT
-                    </a>
+                        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/50 dark:bg-slate-900/50 backdrop-blur-xl border border-slate-200 dark:border-slate-800 text-cyan-700 dark:text-cyan-400 text-[10px] font-black uppercase tracking-[0.3em] shadow-xl">
+                            <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
+                            <span>Technical Trajectory</span>
+                        </div>
+                    </motion.div>
+
+                    {/* Main Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-center mb-40"
+                    >
+                        <h1 className="text-6xl sm:text-8xl font-black tracking-tighter leading-none mb-8">
+                            Professional <br className="hidden sm:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-700 dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-500">Experience</span>
+                        </h1>
+                        <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto font-medium leading-relaxed">
+                            An immutable log of my journey through software engineering, cloud architectures, and innovative research labs.
+                        </p>
+                    </motion.div>
+
+                    {/* Timeline Container */}
+                    <div className="relative max-w-6xl mx-auto px-4 sm:px-0">
+
+                        {/* Central Glowing Line (Desktop Only) */}
+                        <div className="hidden lg:block absolute left-1/2 w-px h-full bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-800 to-transparent transform -translate-x-1/2">
+                            <motion.div
+                                className="w-[2px] h-1/3 bg-gradient-to-b from-transparent via-cyan-500 to-transparent shadow-[0_0_20px_rgba(6,182,212,0.8)]"
+                                animate={{ y: ['-100%', '300%'] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            />
+                        </div>
+
+                        {/* Mobile Vertical Line */}
+                        <div className="lg:hidden absolute left-4 w-px h-full bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+
+                        {experienceData.map((exp, i) => (
+                            <TimelineItem key={i} data={exp} index={i} />
+                        ))}
+                    </div>
+
+                    {/* Final CTA */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-40 p-12 lg:p-20 glass rounded-[4rem] text-center max-w-4xl mx-auto relative overflow-hidden group border-indigo-500/20"
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+                        <div className="relative z-10">
+                            <div className="w-20 h-20 bg-indigo-600/10 rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform duration-500">
+                                <Zap size={40} className="text-indigo-600 dark:text-indigo-400 fill-current" />
+                            </div>
+                            <h4 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter">Ready to Build the Future?</h4>
+                            <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
+                                I'm actively seeking opportunities to scale systems, solve complex backend challenges, and innovate in R&D environments.
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center gap-6">
+                                <NavLink
+                                    to="/contact"
+                                    className="inline-flex items-center justify-center gap-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-black py-5 px-12 rounded-[2rem] hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-slate-900/20 dark:shadow-white/20"
+                                >
+                                    <span>Initiate Collaboration</span>
+                                    <TrendingUp size={20} />
+                                </NavLink>
+                            </div>
+                        </div>
+                    </motion.div>
+
                 </div>
-            </section>
-        </div>
+            </main>
+        </>
     );
 };
 

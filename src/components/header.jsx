@@ -70,14 +70,14 @@ function Header() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 70, damping: 20, delay: 0.2 }}
-        className="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-lg border-b border-slate-300/10"
+        className="sticky top-0 z-50 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-300/10 shadow-sm dark:shadow-none"
         aria-label="Primary Header"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             
-            <NavLink to="/" className="text-3xl font-bold text-white tracking-wider" aria-label="Ramesh Singad - Homepage">
-              R<span className="text-cyan-400">S</span>
+            <NavLink to="/" className="text-3xl font-bold text-slate-900 dark:text-white tracking-wider" aria-label="Ramesh Singad - Homepage">
+              R<span className="text-cyan-600 dark:text-cyan-400">S</span>
             </NavLink>
             
             <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
@@ -87,27 +87,27 @@ function Header() {
                 </NavLink>
               ))}
             </nav>
-
+            
             <div className="flex items-center space-x-4">
               <button 
                 onClick={toggleTheme} 
-                className="p-2 rounded-full text-gray-400 hover:text-cyan-400 transition-colors"
+                className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
                 aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
                 {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
               </button>
-
+            
               <NavLink 
                 to="/contact" 
-                className="hidden sm:inline-block text-sm font-medium text-white bg-cyan-500/10 border border-cyan-500/30 rounded-full px-5 py-2 hover:bg-cyan-500/20 transition-all duration-300"
+                className="hidden sm:inline-block text-sm font-bold text-cyan-700 dark:text-white bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/30 rounded-full px-5 py-2 hover:bg-cyan-100 dark:hover:bg-cyan-500/20 transition-all duration-300"
               >
                 Contact Me
               </NavLink>
-
+            
               <div className="md:hidden">
                 <button 
                   onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                  className="text-gray-400 hover:text-cyan-400"
+                  className="text-slate-500 dark:text-gray-400 hover:text-cyan-600 dark:hover:text-cyan-400"
                   aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isMenuOpen}
                 >

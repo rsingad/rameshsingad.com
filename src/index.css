@@ -9,3 +9,22 @@
   --lightAqua: rgb(144, 224, 239);
   --light: rgb(202, 240, 248);
 }
+
+@layer components {
+  .glass {
+    @apply bg-white/10 dark:bg-slate-900/40 backdrop-blur-md border border-white/20 dark:border-slate-700/30 shadow-xl;
+  }
+  
+  .glass-hover {
+    @apply hover:bg-white/20 dark:hover:bg-slate-800/60 transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}

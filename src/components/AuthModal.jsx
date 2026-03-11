@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, X, Mail, Lock, Link } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 
 // Google Icon SVG (Unchanged)
 const GoogleIcon = () => (
@@ -15,8 +15,8 @@ function AuthModal({ isOpen, onClose }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const navigate = useNavigate(); 
-    
+    const navigate = useNavigate();
+
     // Environment Variable for Backend API (for GitHub Login URL)
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -28,9 +28,9 @@ function AuthModal({ isOpen, onClose }) {
         // Dummy admin check
         if (email === 'admin@ramesh.com' && password === 'password') {
             setError('');
-            onClose(); 
+            onClose();
             // CRITICAL FIX: Pass the state indicating it's an Admin login
-            navigate('/dashboard', { state: { isAdmin: true } }); 
+            navigate('/dashboard', { state: { isAdmin: true } });
         } else {
             setError('Invalid email or password. Please try again.');
         }
@@ -63,7 +63,7 @@ function AuthModal({ isOpen, onClose }) {
                             >
                                 <X className="w-6 h-6" />
                             </motion.button>
-                            
+
                             <div className="text-center">
                                 <h2 className="text-3xl font-bold text-white mb-2">Join or Log In</h2>
                                 <p className="text-slate-400 mb-6">Start by connecting your account or log in as an admin.</p>
@@ -71,7 +71,7 @@ function AuthModal({ isOpen, onClose }) {
 
                             {/* Social Logins */}
                             <div className="space-y-4">
-                                <a 
+                                <a
                                     href={`${API_BASE_URL}/auth/github`} // Use VITE_API_BASE_URL for GitHub Link
                                     className="w-full flex items-center justify-center gap-3 bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white font-semibold hover:bg-slate-700 hover:border-cyan-500 transition-all duration-300"
                                 >
@@ -93,8 +93,8 @@ function AuthModal({ isOpen, onClose }) {
                                 <div>
                                     <label className="block text-sm font-medium text-slate-400 mb-1 text-left">Admin Email</label>
                                     <div className="relative">
-                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"/>
-                                        <input 
+                                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                        <input
                                             type="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
@@ -106,8 +106,8 @@ function AuthModal({ isOpen, onClose }) {
                                 <div>
                                     <label className="block text-sm font-medium text-slate-400 mb-1 text-left">Password</label>
                                     <div className="relative">
-                                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500"/>
-                                        <input 
+                                        <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                                        <input
                                             type="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}

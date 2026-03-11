@@ -136,7 +136,10 @@ function Dashboard() {
     return (
         <>
             <Helmet>
-                <title>Dashboard | Ramesh Singad</title>
+                <title>User Dashboard | Ramesh Singad Portfolio</title>
+                <meta name="description" content="Access the administrative dashboard for Ramesh Singad's portfolio database, featuring authenticated user data via GitHub OAuth." />
+                <meta name="keywords" content="Ramesh Singad Dashboard, Admin Panel, GitHub OAuth Login, User Management, Portfolio Admin" />
+                <meta name="robots" content="noindex, nofollow" />
             </Helmet>
             
             {/* --- TOP STATUS BAR / LOGOUT --- */}

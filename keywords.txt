@@ -1,0 +1,82 @@
+# Master SEO Keywords List for rameshsingad.com
+
+This file contains all the specific keywords implemented across your website's components to maximize search engine visibility.
+
+## 1. Global & Home Page Keywords
+- Ramesh Singad
+- Software Engineer
+- Portfolio
+- Full-Stack Developer
+- AI
+- React
+- Node.js
+- Ramesh Singad Home
+- React Expert
+- Software Engineer Portfolio
+- Web Developer Jaipur
+- Reliable Freelance Web Developer
+- UI/UX Design for Startups
+- API Integration Services
+- Performance Optimization Expert
+- MERN Stack Specialist Jaipur
+- Framer Motion Portfolio
+- Official Ramesh Singad Website
+- AI Solutions Architect
+
+## 2. About Me Page
+- About Ramesh Singad
+- Software Engineer Biography
+- Web Developer Journey
+- AI Enthusiast
+- Full-Stack Developer Profile
+
+## 3. Skills & Technologies
+- Ramesh Singad Skills
+- Software Engineer Skills
+- React
+- Node.js
+- MongoDB
+- JavaScript Developer
+- Technical Skills Matrix
+
+## 4. Projects & Portfolio
+- Ramesh Singad Projects
+- Web Development Portfolio
+- MERN Stack Projects
+- React Applications
+- 3D Web Simulations
+- Project Gallery
+
+## 5. Professional Experience
+- Ramesh Singad Experience
+- Software Engineer Intern
+- Hyperrcompute
+- R&D IT Solutions
+- Web Development Experience
+
+## 6. Education & Academic
+- Ramesh Singad Education
+- GEC Jaipur
+- GPC Jodhpur
+- Computer Science Diploma
+- B.Tech Jaipur
+
+## 7. Contact & Collaboration
+- Contact Ramesh Singad
+- Hire React Developer
+- Software Engineer Contact
+- Freelance Web Developer Jaipur
+- Collaboration
+
+## 8. Admin & Dashboard
+- Ramesh Singad Dashboard
+- Admin Panel
+- GitHub OAuth Login
+- User Management
+- Portfolio Admin
+
+---
+**SEO Strategy Implemented:**
+- **Granular Targeting**: Each page has a unique set of keywords to avoid "keyword cannibalization".
+- **Semantic XML**: All routes are mapped in `sitemap.xml`.
+- **Rich Results**: JSON-LD Schema is active on the main landing page.

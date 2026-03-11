@@ -2,10 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { XCircle, ArrowLeft } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 function NotFound() {
     return (
-        <main className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-4">
+        <>
+            <Helmet>
+                <title>404 - Page Not Found | Ramesh Singad</title>
+                <meta name="description" content="The page you are looking for does not exist. Return to Ramesh Singad's home base." />
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
+            <main className="min-h-screen bg-slate-900 text-white flex items-center justify-center p-4">
             {/* Background pattern/glow for aesthetic */}
             <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: `radial-gradient(#0ea5e9 1px, transparent 1px)`, backgroundSize: '1.5rem 1.5rem', maskImage: 'radial-gradient(ellipse at center, white, transparent 60%)' }}></div>
 
@@ -38,6 +45,7 @@ function NotFound() {
                 </NavLink>
             </motion.div>
         </main>
+        </>
     );
 }
 
