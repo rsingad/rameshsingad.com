@@ -65,24 +65,24 @@ function Home() {
         <meta property="og:description" content="Explore the innovative projects and technical expertise of Ramesh Singad, a full-stack engineer building the future of web and AI." />
       </Helmet>
 
-      <main 
-        id="home" 
+      <main
+        id="home"
         className="relative w-full min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-white px-4 py-12"
       >
         {/* Advanced Background Decorations */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <div className="absolute -top-[10%] -left-[10%] h-[50%] w-[50%] bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-[120px] animate-blob"></div>
-            <div className="absolute -bottom-[10%] -right-[10%] h-[50%] w-[50%] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
-            <div className="absolute top-[20%] right-[10%] h-[30%] w-[30%] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-[100px] animate-blob animation-delay-4000"></div>
-            
-            {/* Grid Pattern overlay */}
-            <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(90deg, #0ea5e9 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+          <div className="absolute -top-[10%] -left-[10%] h-[50%] w-[50%] bg-cyan-500/10 dark:bg-cyan-500/20 rounded-full blur-[120px] animate-blob"></div>
+          <div className="absolute -bottom-[10%] -right-[10%] h-[50%] w-[50%] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[120px] animate-blob animation-delay-2000"></div>
+          <div className="absolute top-[20%] right-[10%] h-[30%] w-[30%] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-[100px] animate-blob animation-delay-4000"></div>
+
+          {/* Grid Pattern overlay */}
+          <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(#0ea5e9 1px, transparent 1px), linear-gradient(90deg, #0ea5e9 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Left Content Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -127,15 +127,15 @@ function Home() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start pt-4">
-              <NavLink 
+              <NavLink
                 to="/project"
                 className="group relative flex items-center justify-center gap-2 bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-900 font-black py-4 px-10 rounded-2xl hover:bg-cyan-500 dark:hover:bg-cyan-400 transition-all duration-300 shadow-xl shadow-cyan-600/20 dark:shadow-cyan-400/20"
               >
                 <span>View Projects</span>
                 <Rocket size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </NavLink>
-              
-              <NavLink 
+
+              <NavLink
                 to="/contact"
                 className="flex items-center justify-center gap-2 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-white font-black py-4 px-10 rounded-2xl hover:border-cyan-500 dark:hover:border-cyan-500 transition-all duration-300 glass-hover"
               >
@@ -152,14 +152,14 @@ function Home() {
           </motion.div>
 
           {/* Right Visual Column */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
             className="relative flex justify-center items-center"
           >
             <div className="relative w-80 h-80 sm:w-[450px] sm:h-[450px]">
-              
+
               {/* Spinning Rings */}
               <div className="absolute inset-0 border-[1px] border-dashed border-cyan-500/20 dark:border-cyan-400/20 rounded-full animate-spin-slow"></div>
               <div className="absolute inset-10 border-[1px] border-dashed border-indigo-500/20 dark:border-indigo-400/20 rounded-full animate-spin-slow animation-delay-2000" style={{ animationDirection: 'reverse' }}></div>
@@ -177,12 +177,12 @@ function Home() {
               <div className="absolute inset-16 sm:inset-24 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-3xl p-1 shadow-[0_0_50px_rgba(6,182,212,0.3)] dark:shadow-[0_0_80px_rgba(6,182,212,0.15)] animate-float">
                 <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[22px] overflow-hidden p-3 relative group">
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <img 
-                      src="/main.jpg" 
-                      alt="Ramesh Singad - Senior Software Engineer & AI Architect Profile Photo" 
-                      className="w-full h-full object-cover rounded-[15px] grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+                  <img
+                    src="/main.jpg"
+                    alt="Ramesh Singad - Senior Software Engineer & AI Architect Profile Photo"
+                    className="w-full h-full object-cover rounded-[15px] grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                   />
-                  
+
                   {/* Floating floating label */}
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 glass px-4 py-2 rounded-xl text-xs font-black shadow-2xl border border-white/20 whitespace-nowrap">
                     👋 Coding the Future

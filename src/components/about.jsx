@@ -39,7 +39,7 @@ function About() {
             </Helmet>
 
             <main className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white px-4 sm:px-6 lg:px-8 py-20 overflow-hidden">
-                
+
                 {/* Background Decorations (Same as Home for consistency) */}
                 <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
                     <div className="absolute top-[10%] right-[5%] h-[40%] w-[40%] bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-[100px] animate-blob"></div>
@@ -48,9 +48,9 @@ function About() {
                 </div>
 
                 <div className="max-w-7xl mx-auto relative z-10">
-                    
+
                     {/* Section Label */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -63,7 +63,7 @@ function About() {
                     </motion.div>
 
                     {/* Header */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -82,9 +82,9 @@ function About() {
 
                     {/* Main Content Grid */}
                     <div className="mt-20 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-                        
+
                         {/* Avatar Column */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -97,10 +97,10 @@ function About() {
                                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-[40px] p-1.5 shadow-[0_0_50px_rgba(6,182,212,0.2)] dark:shadow-[0_0_80px_rgba(6,182,212,0.1)] animate-float">
                                     <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[35px] overflow-hidden p-4 relative group">
                                         <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                        <img 
-                                            src="/main.jpg" 
-                                            onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/400x400/0f172a/94a3b8?text=Ramesh" }}
-                                            alt="Ramesh Singad - Professional Software Engineer specializing in React and AI" 
+                                        <img
+                                            src="/main.jpg"
+                                            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/0f172a/94a3b8?text=Ramesh" }}
+                                            alt="Ramesh Singad - Professional Software Engineer specializing in React and AI"
                                             className="w-full h-full object-cover rounded-[25px] transition-all duration-700 group-hover:scale-105"
                                         />
                                         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 glass px-6 py-3 rounded-2xl text-sm font-black shadow-2xl border border-white/20 whitespace-nowrap">
@@ -112,7 +112,7 @@ function About() {
                         </motion.div>
 
                         {/* Bio Column */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -129,14 +129,14 @@ function About() {
                             </div>
 
                             <div className="flex flex-col sm:flex-row gap-5">
-                                <a 
-                                    href="/ramesh_singad_resume.pdf" 
+                                <a
+                                    href="/ramesh_singad_resume.pdf"
                                     className="group flex items-center justify-center gap-3 bg-cyan-600 dark:bg-cyan-500 text-white dark:text-slate-900 font-black py-4 px-10 rounded-2xl hover:bg-cyan-500 dark:hover:bg-cyan-400 transition-all duration-300 shadow-xl shadow-cyan-600/20 dark:shadow-cyan-400/20"
                                 >
                                     <Download size={20} className="group-hover:translate-y-1 transition-transform" />
                                     Download CV
                                 </a>
-                                <NavLink 
+                                <NavLink
                                     to="/contact"
                                     className="flex items-center justify-center gap-3 bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-white font-black py-4 px-10 rounded-2xl hover:border-cyan-500 dark:hover:border-cyan-500 transition-all duration-300 glass-hover"
                                 >
@@ -146,15 +146,15 @@ function About() {
                             </div>
                         </motion.div>
                     </div>
-                    
+
                     {/* Stats Highlights */}
                     <div className="mt-32 grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
-                        <StatCard icon={<Briefcase size={28}/>} value="1+" label="Years of Dev" />
-                        <StatCard icon={<Zap size={28}/>} value="15+" label="Projects Built" />
-                        <StatCard icon={<Star size={28}/>} value="10+" label="Core Techs" />
-                        <StatCard icon={<Rocket size={28}/>} value="4.9" label="Avg Rating" />
+                        <StatCard icon={<Briefcase size={28} />} value="1+" label="Years of Dev" />
+                        <StatCard icon={<Zap size={28} />} value="15+" label="Projects Built" />
+                        <StatCard icon={<Star size={28} />} value="10+" label="Core Techs" />
+                        <StatCard icon={<Rocket size={28} />} value="4.9" label="Avg Rating" />
                     </div>
-                
+
                 </div>
             </main>
         </>
