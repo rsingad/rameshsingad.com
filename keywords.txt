@@ -4,16 +4,14 @@ This file contains all the specific keywords implemented across your website's c
 
 ## 1. Global & Home Page Keywords
 - Ramesh Singad
-- Software Engineer
+- Senior Software Engineer
+- AI Architect
 - Portfolio
-- Full-Stack Developer
-- AI
-- React
-- Node.js
-- Ramesh Singad Home
-- React Expert
-- Software Engineer Portfolio
-- Web Developer Jaipur
+- Full-Stack Developer Jaipur
+- React Architect
+- AI Engineer India
+- MERN Stack Expert
+- Web Development Services
 - Reliable Freelance Web Developer
 - UI/UX Design for Startups
 - API Integration Services
@@ -22,61 +20,72 @@ This file contains all the specific keywords implemented across your website's c
 - Framer Motion Portfolio
 - Official Ramesh Singad Website
 - AI Solutions Architect
+- Software Architect
 
 ## 2. About Me Page
 - About Ramesh Singad
 - Software Engineer Biography
-- Web Developer Journey
-- AI Enthusiast
-- Full-Stack Developer Profile
+- Ramesh Singad Journey
+- AI Enthusiast India
+- Senior Web Developer Profile
+- Tech Visionary
+- Clean Code Specialist
+- Modular Architecture Expert
 
-## 3. Skills & Technologies
+## 3. Technical Skills & Expertise
 - Ramesh Singad Skills
-- Software Engineer Skills
-- React
-- Node.js
-- MongoDB
-- JavaScript Developer
-- Technical Skills Matrix
+- Senior React Developer
+- Node.js Expert
+- MERN Stack Architecture
+- AI Implementation
+- Software Engineering Expertise
+- Technical Consultant Jaipur
+- Scalable System Design
 
 ## 4. Projects & Portfolio
 - Ramesh Singad Projects
 - Web Development Portfolio
-- MERN Stack Projects
-- React Applications
-- 3D Web Simulations
-- Project Gallery
+- MERN Stack Case Studies
+- React Developer Projects
+- UI/UX Design Portfolio
+- AI Project Showcase
+- 3D Web Simulations Portfolio
+- Innovation Showcase
 
 ## 5. Professional Experience
 - Ramesh Singad Experience
-- Software Engineer Intern
-- Hyperrcompute
-- R&D IT Solutions
-- Web Development Experience
+- Senior Software Engineer Intern
+- Full-Stack Developer Jaipur
+- Hypercompute Cloud Projects
+- R&D IT Solutions Experience
+- Web Development Work History
+- Professional Trajectory
 
 ## 6. Education & Academic
 - Ramesh Singad Education
-- GEC Jaipur
-- GPC Jodhpur
-- Computer Science Diploma
-- B.Tech Jaipur
+- B.Tech Computer Science Jaipur
+- Engineering Student Portfolio
+- GEC Jaipur Alumni
+- Academic Excellence in CS
+- Engineering Foundation
 
 ## 7. Contact & Collaboration
 - Contact Ramesh Singad
 - Hire React Developer
 - Software Engineer Contact
+- Initiate Collaboration
 - Freelance Web Developer Jaipur
-- Collaboration
+- Project Consultation
 
-## 8. Admin & Dashboard
-- Ramesh Singad Dashboard
-- Admin Panel
-- GitHub OAuth Login
-- User Management
-- Portfolio Admin
+## 8. Technical SEO Implementation:
+- google-site-verification: oL0-AxT-J5YCg8dmDAz4rIS1lXWQw8h30Om_zOL4XGw
+- Sitemap: /sitemap.xml
+- Robots: /robots.txt
+- Vercel Caching Optimized
 
 ---
 **SEO Strategy Implemented:**
 - **Granular Targeting**: Each page has a unique set of keywords to avoid "keyword cannibalization".
-- **Semantic XML**: All routes are mapped in `sitemap.xml`.
-- **Rich Results**: JSON-LD Schema is active on the main landing page.
+- **Dynamic SEO**: Powered by `react-helmet-async`.
+- **Global Identity**: Established "Senior Software Engineer & AI Architect" as the primary brand.
+- **Verification**: Google Search Console ready.

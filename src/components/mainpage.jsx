@@ -21,12 +21,12 @@ function MainPage() {
 
       <Home />
       <About />
-      <Education/>
+      <Education />
       <Skill />
-      <Experience/>
+      <Experience />
       <Project />
       <Contact />
-      <Footer />
+
     </>
   );
 }

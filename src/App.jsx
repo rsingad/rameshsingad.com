@@ -8,6 +8,9 @@ import MainPage from './components/mainpage';
 import Skill from './components/skill/Skill';
 import Project from './components/project/project';
 import Dashboard from './components/dashbord';
+import TrafficDashboard from './components/TrafficDashboard';
+import TechInsights from './components/TechInsights';
+import InsightDetail from './components/InsightDetail';
 import NotFound from './components/NotFound.jsx';
 import Chatbot from './components/Chatbot.jsx';
 import Education from './components/education.jsx';
@@ -29,6 +32,9 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/project' element={<Project />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/traffic-dashboard" element={<TrafficDashboard />} />
+          <Route path="/insights" element={<TechInsights />} />
+          <Route path="/insights/:id" element={<InsightDetail />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
