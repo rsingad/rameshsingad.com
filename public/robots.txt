@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://rameshsingad.com/sitemap.xml
+Sitemap: https://www.rameshsingad.com/sitemap.xml
