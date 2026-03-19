@@ -178,7 +178,9 @@ function Home() {
                 <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[22px] overflow-hidden p-3 relative group">
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img
-                    src="/main.jpg"
+                    src="/main.webp"
+                    fetchpriority="high"
+                    loading="eager"
                     alt="Ramesh Singad - Senior Software Engineer & AI Architect Profile Photo"
                     className="w-full h-full object-cover rounded-[15px] grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                   />

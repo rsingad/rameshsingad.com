@@ -98,7 +98,9 @@ function About() {
                                     <div className="w-full h-full bg-white dark:bg-slate-900 rounded-[35px] overflow-hidden p-4 relative group">
                                         <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <img
-                                            src="/main.jpg"
+                                            src="/main.webp"
+                                            fetchpriority="high"
+                                            loading="eager"
                                             onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/0f172a/94a3b8?text=Ramesh" }}
                                             alt="Ramesh Singad - Professional Software Engineer specializing in React and AI"
                                             className="w-full h-full object-cover rounded-[25px] transition-all duration-700 group-hover:scale-105"

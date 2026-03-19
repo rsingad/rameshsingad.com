@@ -37,9 +37,15 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rameshsingad.com/dashboard</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://www.rameshsingad.com/contact</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rameshsingad.com/insights</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
