@@ -53,8 +53,8 @@ function Header() {
     { to: "/education", text: "Education" },
     { to: "/skills", text: "Skills" },
     { to: "/experience", text: "Experience" }, 
-    // NEW: Experience and Education added here
     { to: "/project", text: "Projects" },
+    { to: "/ai-lab", text: "AI Lab ✨" },
   ];
 
   const navLinkClass = ({ isActive }) =>

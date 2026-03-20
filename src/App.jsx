@@ -18,6 +18,7 @@ const InsightDetail = lazy(() => import('./components/InsightDetail'));
 const NotFound = lazy(() => import('./components/NotFound.jsx'));
 const Education = lazy(() => import('./components/education.jsx'));
 const Experience = lazy(() => import('./components/experience.jsx'));
+const AILab = lazy(() => import('./components/AILab.jsx'));
 
 const PageLoader = () => (
   <div className="w-full h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
@@ -44,6 +45,7 @@ function App() {
             <Route path="/traffic-dashboard" element={<TrafficDashboard />} />
             <Route path="/insights" element={<TechInsights />} />
             <Route path="/insights/:id" element={<InsightDetail />} />
+            <Route path="/ai-lab" element={<AILab />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
