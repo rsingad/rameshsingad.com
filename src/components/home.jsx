@@ -179,6 +179,8 @@ function Home() {
                   <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <img
                     src="/main.webp"
+                    width="420"
+                    height="420"
                     fetchpriority="high"
                     loading="eager"
                     alt="Ramesh Singad - Senior Software Engineer & AI Architect Profile Photo"

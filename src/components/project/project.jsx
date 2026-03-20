@@ -177,9 +177,9 @@ const ProjectCard = React.forwardRef(({ project, i }, ref) => (
                 <Code size={80} strokeWidth={1} />
             </div>
 
-            <h3 className="text-3xl font-black text-slate-950 dark:text-white mb-4 tracking-tighter leading-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+            <h2 className="text-3xl font-black text-slate-950 dark:text-white mb-4 tracking-tighter leading-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                 {project.title}
-            </h3>
+            </h2>
 
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow font-medium">
                 {project.description}

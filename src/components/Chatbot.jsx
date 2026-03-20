@@ -551,7 +551,7 @@ function Chatbot() {
                             className={`px-4 py-2 rounded-2xl shadow-xl border backdrop-blur-md text-xs font-bold ${theme === 'dark' ? 'bg-slate-900/90 border-cyan-500/30 text-cyan-400' : 'bg-white/90 border-cyan-200 text-cyan-600'}`}
                         >
                             Need any help? 😊
-                            <button onClick={(e) => { e.stopPropagation(); setShowGreetingBubble(false); }} className="ml-2 opacity-50 hover:opacity-100">
+                            <button onClick={(e) => { e.stopPropagation(); setShowGreetingBubble(false); }} className="ml-2 opacity-50 hover:opacity-100" aria-label="Close greeting">
                                 <X size={12} />
                             </button>
                         </motion.div>

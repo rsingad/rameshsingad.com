@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /traffic-dashboard
 
 # Sitemaps
 Sitemap: https://www.rameshsingad.com/sitemap.xml

@@ -134,8 +134,9 @@ function Contact() {
   return (
     <>
       <Helmet>
-        <title>Contact Me | Ramesh Singad - Software Engineer</title>
-        <meta name="description" content="Get in touch with Ramesh Singad to collaborate on exciting projects. Let's build the future together." />
+        <title>Contact Ramesh Singad | Hire Full-Stack & React Developer in Jaipur</title>
+        <meta name="description" content="Get in touch with Ramesh Singad, a top Full-Stack Software Engineer. Available for freelance projects, technical consulting, and React/Node.js development." />
+        <meta name="keywords" content="Hire React Developer, Freelance Software Engineer Jaipur, Contact Ramesh Singad, Full-Stack Developer India, Node.js Freelancer" />
       </Helmet>
 
       <main className="relative min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white px-4 py-24 overflow-hidden">

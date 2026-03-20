@@ -119,18 +119,18 @@ const TimelineItem = ({ data, index }) => {
                     )}
                 </div>
 
-                <h3 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3 leading-tight tracking-tighter">
+                <h2 className="text-3xl lg:text-4xl font-black text-slate-900 dark:text-white mb-3 leading-tight tracking-tighter">
                     {data.title}
-                </h3>
+                </h2>
 
                 <div className="flex items-center gap-4 mb-8">
                     <div className="p-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
                         <Briefcase size={20} className="text-cyan-600" />
                     </div>
                     <div>
-                        <h4 className="text-xl font-black text-slate-800 dark:text-slate-200 tracking-tight leading-none mb-1">
+                        <h3 className="text-xl font-black text-slate-800 dark:text-slate-200 tracking-tight leading-none mb-1">
                             {data.company}
-                        </h4>
+                        </h3>
                         <div className="flex items-center gap-4 text-[10px] font-black uppercase tracking-widest text-slate-400">
                             <span className="flex items-center gap-1.5"><Calendar size={12} /> {data.duration}</span>
                             <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700"></span>
@@ -239,7 +239,7 @@ const Experience = () => {
                             <div className="w-20 h-20 bg-indigo-600/10 rounded-3xl flex items-center justify-center mx-auto mb-10 group-hover:scale-110 transition-transform duration-500">
                                 <Zap size={40} className="text-indigo-600 dark:text-indigo-400 fill-current" />
                             </div>
-                            <h4 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter">Ready to Build the Future?</h4>
+                            <h2 className="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter">Ready to Build the Future?</h2>
                             <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 font-medium max-w-2xl mx-auto leading-relaxed">
                                 I'm actively seeking opportunities to scale systems, solve complex backend challenges, and innovate in R&D environments.
                             </p>

@@ -69,9 +69,9 @@ const EducationItem = ({ data, index }) => {
                     )}
                 </div>
 
-                <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-3 tracking-tight leading-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                <h2 className="text-3xl font-black text-slate-900 dark:text-white mb-3 tracking-tight leading-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                     {data.degree}
-                </h3>
+                </h2>
                 
                 <p className="text-xl font-bold text-cyan-700 dark:text-cyan-400 mb-4">{data.institution}</p>
                 
@@ -176,7 +176,7 @@ function Education() {
                         className="mt-32 p-10 glass rounded-[3rem] text-center max-w-3xl mx-auto relative overflow-hidden group"
                     >
                         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        <h4 className="text-2xl font-black text-slate-900 dark:text-white mb-4">The Journey Continues...</h4>
+                        <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-4">The Journey Continues...</h2>
                         <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 font-medium">
                             Currently mastering advanced full-stack systems and exploring the depths of artificial intelligence at GEC Jaipur.
                         </p>

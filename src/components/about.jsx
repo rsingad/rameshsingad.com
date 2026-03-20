@@ -99,6 +99,8 @@ function About() {
                                         <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <img
                                             src="/main.webp"
+                                            width="600"
+                                            height="600"
                                             fetchpriority="high"
                                             loading="eager"
                                             onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/400x400/0f172a/94a3b8?text=Ramesh" }}
