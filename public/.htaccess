@@ -1,0 +1,78 @@
+# ----------------------------------------------------------------------
+# 1. BROWSER SECURITY HEADERS 
+# ----------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Protect against clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # Protect against MIME type confusion attacks
+  Header always set X-Content-Type-Options "nosniff"
+  # Enable XSS protection in browsers
+  Header always set X-XSS-Protection "1; mode=block"
+  # Force HTTPS connection for the next 1 year (HSTS)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  # Set Referrer Policy
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 2. PROPER ROUTING AND HTTPS/WWW ENFORCEMENT
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect HTTP to HTTPS and Non-WWW to WWW for SEO
+  # (Prevents Duplicate Content Penalty)
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^rameshsingad\.com [NC]
+  RewriteRule ^(.*)$ https://www.rameshsingad.com/$1 [L,R=301]
+
+  # Route React App (Redirect to index.html if file doesn't exist)
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 3. DIRECTORY BROWSING PREVENTION
+# ----------------------------------------------------------------------
+<IfModule mod_autoindex.c>
+  # Stops hackers from seeing folder structures
+  Options -Indexes
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 4. GZIP COMPRESSION (Maximum Performance)
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# 5. BROWSER CACHING (Maximum SEO)
+# ----------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Others
+  ExpiresByType application/pdf "access plus 1 month"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  
+  # Default
+  ExpiresDefault "access plus 2 days"
+</IfModule>
