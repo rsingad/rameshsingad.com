@@ -14,7 +14,7 @@ const experienceData = [
     {
         title: "Software Development Intern",
         company: "Research & Development IT Solutions",
-        duration: "Apr 2025 - Sep 2025",
+        duration: "Mar 2025 - Sep 2025",
         location: "Jaipur, India",
         experience: "6 months",
         type: "R&D",
